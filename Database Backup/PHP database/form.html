@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f1f1f1;
+    }
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      width: 255px;
+      margin: 0 auto;
+    }
+    .container:not(:last-child) {
+      margin-bottom: 20px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    input[type="submit"] {
+      margin-top: 10px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Data Input Form</h1>
+    <form action="http://192.168.0.102/database/kirimdata.php" method="GET">
+      <div>
+        <label for="uid">UID:<br></label>
+        <input type="text" id="uid" name="uid" readonly value="{{uidValue}}">
+      </div>
+      <div>
+        <label for="name">Name:<br></label>
+        <input type="text" id="name" name="name">
+      </div>
+      <div>
+        <label for="email">Email:<br></label>
+        <input type="text" id="email" name="email">
+      </div>
+      <div>
+        <label for="whatsapp">WhatsApp:<br></label>
+        <input type="text" id="whatsapp" name="whatsapp">
+      </div>
+      <div>
+        <label for="dob">Date of Birth:<br></label>
+        <input type="text" id="dob" name="dob">
+      </div>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+</body>
+</html>
