@@ -1,0 +1,91 @@
+----------------PRIORITY------------------------
+
+1. MAKE SURE PC CONNECTING TO:
+
+SSID : "sportHub"
+pass : "sportScience123"
+
+2.MAKE SURE PC USING STATIC IP 
+
+SEARCH : Control Panel
+GO TO  : Network and Internet -> Network and Sharing Center
+CLICK  : Wi-Fi (sportHub)
+
+NEW WINDOW WILL BE OPEN "Wi-Fi Status"
+CLICK PROPERTIES
+
+NEW WINDOW WILL BE OPEN "Wi-Fi Properties"
+CLICK Internet Protocol Version 4 (TCP/IPv4)
+CLICK PROPERTIES
+
+NEW WINDOW WILL BE OPEN "Internet Protocol Version 4 (TCP/IPv4) Properties"
+CLICK "Use the following IP adress"
+
+IP adress        : 192.168.0.199
+Subnet mask      : 255.255.255.0
+Default Gateway  : 192.168.0.1
+
+
+CLICK "Use the following DNS server addresses"
+
+Preferred DNS server : 8.8.8.8
+Alternat DNS Server  : 8.8.4.4
+
+CLICK OK
+CLOSE ALL WINDOWS
+
+----------------PREPARING DATABASE--------------
+
+OPEN XAMPP
+START APCAHE
+START MYSQL
+
+OPEN BROWSER
+SEARCH : "localhost/phpmyadmin"
+GO TO  : DATABASE "display"
+OPEN   : "Event"
+ACTIVATE EVENT (click on the nonaktif button to turn on)
+GO TO  : DATABASE "sportscience"
+MAKE SURE EVENT IS ON
+
+----------------PREPARING DATADISPLAY REACTION_TRAINING --------------
+
+
+OPEN CMD (COMMAND PROPMPT)
+RUN:
+
+_____________________
+D:
+cd display
+npm start
+_____________________
+
+WAIT TILL NEW TAB IS OPEN ON BROWSER
+THE NEW BROWSER TAB WILL BE : "localhost:3000"
+ 
+
+--------------- CONNECTING DATADISPLAY TO DATABASE --------------
+
+
+OPEN NEW CMD (COMMAND PROPMPT)
+RUN:
+______________________
+D:
+cd display/src
+node server.js
+WAIT UNTIL 
+"Server is running on port 3001
+Connected to database! "
+_______________________
+AFTERWARDS YOU CAN MINIMZE ALL THE TABS AND GO BACK TO THE BROWSER
+F11 FOR FULLSCREEEN AND ADJUST THE ZOOM
+
+DONOT CLOSE COMMAND PROMPT UNTIL THE EVENT IS FINISHED
+DONOT CLOSE COMMAND PROMPT UNTIL THE EVENT IS FINISHED
+DONOT CLOSE COMMAND PROMPT UNTIL THE EVENT IS FINISHED
+
+
+-------------------------IMPORTANT------------------------
+MAKE SURE ALL PC THAT IS CONNECTED TO DATABSE IS CLOSE PERFECTLY BEFORE XAMPP IS BEING STOPPED
+
+
