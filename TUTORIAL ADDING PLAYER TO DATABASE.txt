@@ -1,0 +1,88 @@
+----------------SETUP CONNECTION-------------------
+
+1. MAKE SURE PC CONNECTING TO:
+
+SSID : "sportHub"
+pass : "sportScience123"
+
+2.MAKE SURE PC USING STATIC IP 
+
+SEARCH : Control Panel
+GO TO  : Network and Internet -> Network and Sharing Center
+CLICK  : Wi-Fi (sportHub)
+
+NEW WINDOW WILL BE OPEN "Wi-Fi Status"
+CLICK PROPERTIES
+
+NEW WINDOW WILL BE OPEN "Wi-Fi Properties"
+CLICK Internet Protocol Version 4 (TCP/IPv4)
+CLICK PROPERTIES
+
+NEW WINDOW WILL BE OPEN "Internet Protocol Version 4 (TCP/IPv4) Properties"
+CLICK "Use the following IP adress"
+
+IP adress        : 192.168.0.199
+Subnet mask      : 255.255.255.0
+Default Gateway  : 192.168.0.1
+
+
+CLICK "Use the following DNS server addresses"
+
+Preferred DNS server : 8.8.8.8
+Alternat DNS Server  : 8.8.4.4
+
+CLICK OK
+CLOSE ALL WINDOWS
+
+----------------SETUP DATABASE-------------------
+
+1. OPEN XAMPP
+
+2. START APCAHE
+
+3. START MYSQL
+
+----------------SETUP ARDUINO-------------------
+
+1. UPLOAD THIS INO FILE BELOW TO ARDUINO MEGA
+
+#include <SPI.h>
+#include <MFRC522.h>
+
+#define SS_PIN 53    // SDA -> Pin 53 on Arduino Mega
+#define RST_PIN 5    // RST -> Any digital pin, here we use 5
+
+MFRC522 mfrc522(SS_PIN, RST_PIN);
+
+void setup() {
+  Serial.begin(9600);
+  SPI.begin();
+  mfrc522.PCD_Init();
+}
+
+void loop() {
+  if (!mfrc522.PICC_IsNewCardPresent()) return;
+  if (!mfrc522.PICC_ReadCardSerial()) return;
+
+  // Construct UID string
+  String uidStr = "";
+  for (byte i = 0; i < mfrc522.uid.size; i++) {
+    if (mfrc522.uid.uidByte[i] < 0x10) uidStr += "0"; // Pad with 0 if needed
+    uidStr += String(mfrc522.uid.uidByte[i], HEX);
+  }
+
+  uidStr.toUpperCase();        // Make it uppercase (Python expects this)
+  Serial.println(uidStr);      // Send UID only, no extra text
+
+  delay(1000); // Simple debounce
+}
+
+2. CONNECT ARDUINO MEGA TO PC AND NOTE THE PORT DIRECTORY (COM1,COM2,dev/usbttys0,etc.)
+
+----------------RUNNING PYTHON CODE-------------------
+
+1. OPEN PYTHON CODE IN FOLDER "Registration RFID Sport Science" USING VSCODE/TEXT EDITOR
+
+2. CHANGE THIS PART TO YOUR PORT DIRECTORY
+	# Create SerialObject with COM port "COM20"
+	mySerial = serial.Serial("/dev/cu.usbmodem14201", 9600)
